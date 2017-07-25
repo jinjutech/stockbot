@@ -4,11 +4,12 @@
   "description": "stock related api",
   "main": "handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "mocha": "^3.4.2",
     "request": "^2.81.0"
   }
 }

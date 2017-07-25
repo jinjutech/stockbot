@@ -14,7 +14,7 @@ module.exports.hello = (event, context, callback) => {
   callback(null, response);
 };
 
-module.exports.sendToDingding = (event, context, callback) => {
+module.exports.notifyDingding = (event, context, callback) => {
   const msg = 'hello';
   const accessToken = '601d8c7b44ca18e1472f42c24b8eb791074071b2c0ee305af0a4f096996dad0b';
   const url = `https://oapi.dingtalk.com/robot/send?access_token=${accessToken}`;
@@ -42,3 +42,11 @@ module.exports.sendToDingding = (event, context, callback) => {
     callback(error, response, body);
   })
 };
+
+module.exports.stocks = (event, context, callback) => {
+
+}
+
+module.exports.stock = (event, context, callback) => {
+  
+}

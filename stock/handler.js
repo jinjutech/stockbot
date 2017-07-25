@@ -12,9 +12,6 @@ module.exports.hello = (event, context, callback) => {
   };
 
   callback(null, response);
-
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
 };
 
 module.exports.sendToDingding = (event, context, callback) => {
@@ -44,7 +41,4 @@ module.exports.sendToDingding = (event, context, callback) => {
   request(options, (error, response, body) => {
     callback(error, response, body);
   })
-
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
 };

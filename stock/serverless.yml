@@ -49,27 +49,27 @@ functions:
     handler: handler.notifyDingding
     events:
       - http:
-        path: '/stocks/notify/dingding'
-        method: post
+          path: stocks/notify/dingding
+          method: post
       - schedule: rate(1 minute)
   
   stock:
     handler: handler.stock
     events:
       - http:
-        path: '/stock/{id}'
-        method: get
-        request:
-          parameters:
-            paths:
-              id: true
+          path: stock/{id}
+          method: get
+          request:
+            parameters:
+              paths:
+                id: true
 
   stocks:
     handler: handler.stocks
     events:
       - http:
-        path: '/stocks'
-        method: get
+          path: stocks
+          method: get
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

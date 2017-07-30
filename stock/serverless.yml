@@ -51,7 +51,7 @@ functions:
       - http:
           path: stocks/notify/dingding
           method: post
-      - schedule: rate(1 minute)
+     # - schedule: rate(1 minute)
   
   stock:
     handler: handler.stock

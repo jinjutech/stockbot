@@ -17,7 +17,7 @@ function getMarkdownMsg(data) {
     const v = data[i];
     v.name = stocks[v.code] || '';
     const ratio = ((v.current - v.close) * 100 / v.close).toFixed(2);
-    result.push(`${i + 1}. ${v.name}\t\t(${v.low}/${v.high})\t\t${v.current}\t\t**${ratio}%**`);
+    result.push(`${i + 1}. ${v.name}\t\t${v.current}\t\t**${ratio}%**`);
   }
   return result.join('\n');
 }
@@ -29,7 +29,7 @@ module.exports.notifyDingding = (event, context, callback) => {
   const body = {
     msgtype: 'markdown', 
     markdown: {
-      title: '最新报道',
+      title: '最新价格',
       text: '',
     },
   };

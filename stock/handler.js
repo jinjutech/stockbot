@@ -16,23 +16,11 @@ function getMarkdownMsg(data) {
   for (let i = 0; i < data.length; i++) {
     const v = data[i];
     v.name = stocks[v.code] || '';
-    const ratio = ((v.current - v.opening) * 100 / v.opening).toFixed(2);
+    const ratio = ((v.current - v.close) * 100 / v.close).toFixed(2);
     result.push(`${i + 1}. ${v.name}\t\t(${v.low}/${v.high})\t\t${v.current}\t\t**${ratio}%**`);
   }
   return result.join('\n');
 }
-
-module.exports.hello = (event, context, callback) => {
-  const response = {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'Go Serverless v1.0! Your function executed successfully!',
-      input: event,
-    }),
-  };
-
-  callback(null, response);
-};
 
 module.exports.notifyDingding = (event, context, callback) => {
   const msg = 'hello';
@@ -41,16 +29,9 @@ module.exports.notifyDingding = (event, context, callback) => {
   const body = {
     msgtype: 'markdown', 
     markdown: {
-      title: 'stock',
+      title: '最新报道',
       text: '',
     },
-    at: {
-      atMobiles: [
-        '156xxxx8827', 
-        '189xxxx8325'
-      ], 
-      isAtAll: false
-    }
   };
 
   const options = {

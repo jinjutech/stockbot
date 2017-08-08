@@ -3,19 +3,13 @@
 const request = require('request');
 const sinaStock = require('sina-stock');
 
-const stocks = {
-  sz002410: '小广',
-  sz000333: '美的',
-  sh601318: '平安',
-  sh601628: '人寿',
-  sz002362: '汉王',
-};
+const stocks = ['sz002410', 'sz000333', 'sh601318', 'sh601628', 'sz002362', 'sz002155', 'sz000651',
+  'sh600756', 'sh600728', 'sz002362', 'sz000002', 'sh000001'];
 
 function getMarkdownMsg(data) {
   const result = []
   for (let i = 0; i < data.length; i++) {
     const v = data[i];
-    v.name = stocks[v.code] || '';
     const ratio = ((v.current - v.close) * 100 / v.close).toFixed(2);
     result.push(`${i + 1}. ${v.name}\t\t${v.current}\t\t**${ratio}%**`);
   }
@@ -40,7 +34,7 @@ module.exports.notifyDingding = (event, context, callback) => {
     json: body,
   }; 
 
-  sinaStock.stock(Object.keys(stocks), (err, data) => {
+  sinaStock.stock(stocks, (err, data) => {
     body.markdown.text = getMarkdownMsg(data);
     request(options, (error, response, body) => {
       callback(error, response, body);

@@ -17,7 +17,6 @@ function getMarkdownMsg(data) {
     // item.ratioStr = `<span style="color:${color};font-weight:bold">${item.ratioStr}</span>`;
     item.ratioStr = `**${item.ratioStr}**`;
     item.link = `[${item.name}](http://image.sinajs.cn/newchart/min/n/${item.code}.gif)`;
-    item.link = pad(item.link, 70);
     result.push(util.format(MSG_FORMAT, item.link, item.current, item.ratioStr));
   }
   return result.join('\n');

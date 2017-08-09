@@ -11,7 +11,7 @@ function getMarkdownMsg(data) {
   for (let i = 0; i < data.length; i++) {
     const v = data[i];
     const ratio = ((v.current - v.close) * 100 / v.close).toFixed(2);
-    result.push(`${i + 1}. ${v.name}\t\t${v.current}\t\t**${ratio}%**`);
+    result.push(`${i + 1}. [${v.name}](http://image.sinajs.cn/newchart/min/n/${v.code}.gif)\t\t${v.current}\t\t**${ratio}%**`);
   }
   return result.join('\n');
 }

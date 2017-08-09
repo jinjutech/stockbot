@@ -5,7 +5,7 @@ const sinaStock = require('sina-stock');
 const util = require('util');
 
 const stocks = ['sz002410', 'sz000333', 'sh601318', 'sh601628', 'sz002362', 'sz002155', 'sz000651',
-  'sh600756', 'sh600728', 'sz002362', 'sz000002', 'sh000001'];
+  'sh600756', 'sh600728', 'sz002362', 'sz000002', 'sz002314', 'sh000001'];
 
 function getMarkdownMsg(data) {
   const result = []

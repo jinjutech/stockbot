@@ -27,10 +27,6 @@ functions:
       - http:
           path: stock/{id}
           method: get
-          request:
-            parameters:
-              paths:
-                id: true
 
   stocks:
     handler: handler.stocks

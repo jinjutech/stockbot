@@ -2,16 +2,23 @@
 
 const request = require('request');
 const sinaStock = require('sina-stock');
+const util = require('util');
 
 const stocks = ['sz002410', 'sz000333', 'sh601318', 'sh601628', 'sz002362', 'sz002155', 'sz000651',
   'sh600756', 'sh600728', 'sz002362', 'sz000002', 'sh000001'];
 
 function getMarkdownMsg(data) {
   const result = []
-  for (let i = 0; i < data.length; i++) {
-    const v = data[i];
-    const ratio = ((v.current - v.close) * 100 / v.close).toFixed(2);
-    result.push(`${i + 1}. [${v.name}](http://image.sinajs.cn/newchart/min/n/${v.code}.gif)\t\t${v.current}\t\t**${ratio}%**`);
+  const MSG_FORMAT = '- %s %d %s';
+  for(const item of data) {
+    item.ratio = ((item.current - item.close) * 100 / item.close).toFixed(2);
+    item.ratioStr = `${item.ratio}%`;
+    const color = item.ratio === 0? 'black': item.ratio < 0? 'green': 'red';
+    // item.ratioStr = `<span style="color:${color};font-weight:bold">${item.ratioStr}</span>`;
+    item.ratioStr = `**${item.ratioStr}**`;
+    item.link = `[${item.name}](http://image.sinajs.cn/newchart/min/n/${item.code}.gif)`;
+    item.link = pad(item.link, 70);
+    result.push(util.format(MSG_FORMAT, item.link, item.current, item.ratioStr));
   }
   return result.join('\n');
 }

@@ -17,7 +17,7 @@ functions:
     handler: handler.notifyDingding
     events:
       - http:
-          path: stocks/notify/dingding
+          path: notify/dingding
           method: post
       - schedule: cron(0/10 1-6 ? * MON-FRI *)
   

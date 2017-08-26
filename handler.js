@@ -49,9 +49,9 @@ module.exports.notifyDingding = (event, context, callback) => {
 };
 
 module.exports.stocks = (event, context, callback) => {
-
+  callback(null, {data: []});
 }
 
 module.exports.stock = (event, context, callback) => {
-  
+  callback(null, {data: null}); 
 }

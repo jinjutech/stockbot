@@ -3,6 +3,7 @@
 const request = require('request');
 const sinaStock = require('sina-stock');
 const util = require('util');
+const {Response} = require('./response');
 
 const stocks = ['sz002410', 'sz000333', 'sh601318', 'sh601628', 'sz002362', 'sz002155', 'sz000651',
   'sh600756', 'sh600728', 'sz000002', 'sz002314', 'sh000001'];
@@ -24,7 +25,7 @@ exports.notifyDingding = (event, context, callback) => {
   const accessToken = '601d8c7b44ca18e1472f42c24b8eb791074071b2c0ee305af0a4f096996dad0b';
   const url = `https://oapi.dingtalk.com/robot/send?access_token=${accessToken}`;
   const body = {
-    msgtype: 'markdown', 
+    msgtype: 'markdown',
     markdown: {
       title: '最新价格',
       text: '',
@@ -35,20 +36,20 @@ exports.notifyDingding = (event, context, callback) => {
     uri: url,
     method: 'POST',
     json: body,
-  }; 
+  };
 
   sinaStock.stock(stocks, (err, data) => {
     body.markdown.text = getMarkdownMsg(data);
     request(options, (error, response, body) => {
-      callback(error, response, body);
+      callback(Response(body));
     })
   })
 };
 
 exports.stocks = (event, context, callback) => {
-  callback(null, {data: []});
+  callback(null, Response({data: []}));
 }
 
 exports.stock = (event, context, callback) => {
-  callback(null, {data: null}); 
+  callback(null, Response({data: null}));
 }

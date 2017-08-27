@@ -13,8 +13,6 @@ function getMarkdownMsg(data) {
   for(const item of data) {
     item.ratio = ((item.current - item.close) * 100 / item.close).toFixed(2);
     item.ratioStr = `${item.ratio}%`;
-    const color = item.ratio === 0? 'black': item.ratio < 0? 'green': 'red';
-    // item.ratioStr = `<span style="color:${color};font-weight:bold">${item.ratioStr}</span>`;
     item.ratioStr = `**${item.ratioStr}**`;
     item.link = `[${item.name}](http://image.sinajs.cn/newchart/min/n/${item.code}.gif)`;
     result.push(util.format(MSG_FORMAT, item.link, item.current, item.ratioStr));
@@ -23,7 +21,6 @@ function getMarkdownMsg(data) {
 }
 
 exports.notifyDingding = (event, context, callback) => {
-  const msg = 'hello';
   const accessToken = '601d8c7b44ca18e1472f42c24b8eb791074071b2c0ee305af0a4f096996dad0b';
   const url = `https://oapi.dingtalk.com/robot/send?access_token=${accessToken}`;
   const body = {

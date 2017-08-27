@@ -41,7 +41,7 @@ exports.notifyDingding = (event, context, callback) => {
   sinaStock.stock(stocks, (err, data) => {
     body.markdown.text = getMarkdownMsg(data);
     request(options, (error, response, body) => {
-      callback(Response(body));
+      callback(null, Response(body));
     })
   })
 };

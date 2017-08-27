@@ -22,7 +22,7 @@ function getMarkdownMsg(data) {
   return result.join('\n');
 }
 
-module.exports.notifyDingding = (event, context, callback) => {
+exports.notifyDingding = (event, context, callback) => {
   const msg = 'hello';
   const accessToken = '601d8c7b44ca18e1472f42c24b8eb791074071b2c0ee305af0a4f096996dad0b';
   const url = `https://oapi.dingtalk.com/robot/send?access_token=${accessToken}`;
@@ -48,10 +48,10 @@ module.exports.notifyDingding = (event, context, callback) => {
   })
 };
 
-module.exports.stocks = (event, context, callback) => {
+exports.stocks = (event, context, callback) => {
   callback(null, {data: []});
 }
 
-module.exports.stock = (event, context, callback) => {
+exports.stock = (event, context, callback) => {
   callback(null, {data: null}); 
 }

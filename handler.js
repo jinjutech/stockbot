@@ -5,8 +5,22 @@ const sinaStock = require('sina-stock');
 const util = require('util');
 const {Response} = require('./response');
 
-const stocks = ['sz002410', 'sz000333', 'sh601318', 'sh601628', 'sz002362', 'sz002155', 'sz000651',
-  'sh600756', 'sh600728', 'sz000002', 'sz002314', 'sh000001'];
+const stocks = [
+  'sz002410', // 广联达
+  'sz002155', // 联通
+  'sz002230', // 科大讯飞
+  'sz000333', // 美的
+  'sh601318', // 中国平安
+  // 'sh601628', // 中国人寿
+  'sz002362', // 汉王科技
+  'sz002155', // 湖南黄金
+  // 'sz000651', // 格力电器
+  'sh600756', // 浪潮软件
+  'sh600728', // 佳都科技
+  // 'sz000002', // 万科A
+  'sz002314', // 南山控股
+  'sh000001', // 上证指数
+];
 
 function getMarkdownMsg(data) {
   const result = []

@@ -19,7 +19,7 @@ functions:
       - http:
           path: notify/dingding
           method: post
-      - schedule: cron(0/10 1-6 ? * MON-FRI *)
+      - schedule: cron(0/5 1-6 ? * MON-FRI *)
   
   stock:
     handler: handler.stock

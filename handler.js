@@ -7,7 +7,7 @@ const {Response} = require('./response');
 
 const stocks = [
   'sz002410', // 广联达
-  'sz002155', // 联通
+  'sh600050', // 联通
   'sz002230', // 科大讯飞
   'sz000333', // 美的
   'sh601318', // 中国平安
